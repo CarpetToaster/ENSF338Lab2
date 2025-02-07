@@ -5,7 +5,7 @@ i) this is the fibonacci sequence
 
 ii) this isn't really "divide" and conquer, as it actually causes some already solved instances to get solved several times
 
-iii) O(n^2) since each call reduces the overall n by 1 but multiples it again by 2
+iii) O(n^2) since each call reduces the overall n by 1 but multiples it again by 2 until a base case is reached
 '''
 
 def fibMemo(n, doneDict = {}):
@@ -26,20 +26,20 @@ def fib(n):
         return fib(n-1) + fib(n-2)
     
 '''
-v) O(n) is worst case
+v) O(n) as it must do n - 1 function calls (checking if it's in storage can be thought of as an operation even though it is likely its own search algo
 '''
 
 timesFixed = []
 for i in range(35):
     time = timeit.timeit(lambda: fibMemo(i), number = 1)
     timesFixed.append(time)
-print(timesFixed)
+print(timesFixed) #debugging
 
 timesBad = []
 for i in range(35):
     time = timeit.timeit(lambda: fib(i), number = 1)
     timesBad.append(time)
-print(timesBad)
+print(timesBad) #debugging
 
 def doPlot(values):
     plt.plot(values)
